@@ -11,12 +11,12 @@
     ],
     "website": "https://developer.box.com/",
     "env": {
-        "APP_NAME": {
-            "description": "Replace with the name of your Heroku app",
-            "value": ""
-        },
         "BOX_CONFIG": {
             "description": "Box application JSON contents",
+            "value": ""
+        },
+        "REACT_APP_HOST": {
+            "description": "Replace with the name of your Heroku app",
             "value": ""
         },
         "SIGNED_REQUEST_CONSUMER_SECRET": {
