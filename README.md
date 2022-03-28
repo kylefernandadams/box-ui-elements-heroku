@@ -1,12 +1,6 @@
 # Box UI Elements Heroku Template
 The Box UI Elements Heroku Template project is an example that uses a React.js frontend and Express backend that handles signed request logic from a Salesforce CanvasApp. These examples are designed to be used for demonstration, development, and test purposes.
 
-
-## Heroku Deployment
-To deploy this project to Heroku, be sure to set your environment variables in the dashboard:
-
-
-
 ## Pre-Requisites
 
 1. Create a JWT Application in the [Box Developer Console](https://account.box.com/developers/services) using the following [Setup Guide.](https://developer.box.com/en/guides/applications/custom-apps/jwt-setup/)
@@ -14,7 +8,7 @@ To deploy this project to Heroku, be sure to set your environment variables in t
 3. Deploy the [Box Canvas App Sample](https://github.com/kylefernandadams/box-salesforce-blueprints/tree/master/box-canvas-app)
 4. Copy the CONSUMER SECRET for the CanvasApp()
 5. Deploy this template app to Heroku and add the environment variables below:
-- `APP_NAME`
+- `REACT_APP_HOST`
 - `BOX_CONFIG`
 - `SIGNED_REQUEST_CONSUMER_SECRET`
   
