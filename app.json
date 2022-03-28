@@ -3,21 +3,26 @@
     "description": "A React and Node JS (express) sample with support for Salesforce CanvasApp Signed Request handling",
     "repository": "https://github.com/kylefernandadams/box-ui-elements-heroku-template.git",
     "logo": "https://github.com/kylefernandadams/box-ui-elements-heroku-template/raw/main/box.png",
-    "keywords": [ "box", "salesforce", "canvasapp", "react" ],
+    "keywords": [
+        "box",
+        "salesforce",
+        "canvasapp",
+        "react"
+    ],
     "website": "https://developer.box.com/",
     "env": {
-      "BOX_CONFIG": {
+        "BOX_CONFIG": {
             "description": "Box application JSON contents",
-          "value": "Add JSON here"
-      },
-      "SIGNED_REQUEST_CONSUMER_SECRET": {
+            "value": ""
+        },
+        "REACT_APP_HEROKU_APP_NAME": {
+            "description": "Replace with the name of your Heroku app",
+            "value": "",
+            "required": false
+        },
+        "SIGNED_REQUEST_CONSUMER_SECRET": {
             "description": "Replace with your Salesforce CanvasApp CONSUMER SECRET KEY",
-            "value": "Add SECRET here "
-      },
-      "REACT_APP_HEROKU_APP_NAME": {
-        "description": "Replace with the name of your Heroku app",
-        "value": "Add name here ",
-        "required": false
+            "value": ""
         }
     }
-  }
+}
