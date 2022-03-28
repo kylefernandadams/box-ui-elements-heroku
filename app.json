@@ -2,7 +2,7 @@
     "name": "box-ui-elements-heroku",
     "description": "A React and Node JS (express) sample with support for Salesforce CanvasApp Signed Request handling",
     "repository": "https://github.com/kylefernandadams/box-ui-elements-heroku-template.git",
-    "logo": "https://github.com/kylefernandadams/box-ui-elements-heroku-template/blob/main/box.png",
+    "logo": "https://github.com/kylefernandadams/box-ui-elements-heroku-template/raw/main/box.png",
     "keywords": [ "box", "salesforce", "canvasapp", "react" ],
     "website": "https://developer.box.com/",
     "env": {
