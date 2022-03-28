@@ -14,6 +14,7 @@ To deploy this project to Heroku, be sure to set your environment variables in t
 3. Deploy the [Box Canvas App Sample](https://github.com/kylefernandadams/box-salesforce-blueprints/tree/master/box-canvas-app)
 4. Copy the CONSUMER SECRET for the CanvasApp()
 5. Deploy this template app to Heroku and add the environment variables below:
+- `APP_NAME`
 - `BOX_CONFIG`
 - `SIGNED_REQUEST_CONSUMER_SECRET`
   
