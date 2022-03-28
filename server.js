@@ -9,7 +9,7 @@ const app = express();
 
 const BoxSDK = require('box-node-sdk');
 const boxConfig = process.env.BOX_CONFIG;
-const sdk = BoxSDK.getPreconfiguredInstance(JSON.parse(boxConfig)D);
+const sdk = BoxSDK.getPreconfiguredInstance(JSON.parse(boxConfig));
 const client = sdk.getAppAuthClient('enterprise');
 
 const { EXPLORER_SCOPES, RECENTS_SCOPES, PICKER_SCOPES, UPLOADER_SCOPES, PREVIEW_SCOPES } = require('./server-constants');
