@@ -13,6 +13,11 @@
       "SIGNED_REQUEST_CONSUMER_SECRET": {
             "description": "Replace with your Salesforce CanvasApp CONSUMER SECRET KEY",
             "value": "Add SECRET here "
-      }
+      },
+      "REACT_APP_HEROKU_APP_NAME": {
+        "description": "Replace with the name of your Heroku app",
+        "value": "Add name here ",
+        "required": false
+        }
     }
   }
