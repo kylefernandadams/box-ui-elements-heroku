@@ -15,10 +15,9 @@
             "description": "Box application JSON contents",
             "value": ""
         },
-        "REACT_APP_HEROKU_APP_NAME": {
+        "HEROKU_APP_NAME": {
             "description": "Replace with the name of your Heroku app",
-            "value": "",
-            "required": false
+            "value": ""
         },
         "SIGNED_REQUEST_CONSUMER_SECRET": {
             "description": "Replace with your Salesforce CanvasApp CONSUMER SECRET KEY",
