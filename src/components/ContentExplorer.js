@@ -15,8 +15,8 @@ export default ({ folderId }) => {
         const fetchToken = async () => {
             setIsLoading(true);
             setRootFolderId(folderId);       
-            const result = await axios.get(`${EXPRESS_SERVER_HOST}/box/explorer/token-downscope/${folderId}`);
-            console.log('Downscoped Token React: ', result.data.accessToken);
+            const result = await axios.get(`https://${process.env.HEROKU_APP_NAME}.herokuapp.com/box/explorer/token-downscope/${folderId}`);
+            // const result = await axios.get(`${EXPRESS_SERVER_HOST}/box/explorer/token-downscope/${folderId}`);            
             setToken(result.data.accessToken);
             setIsLoading(false);
         }
