@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors({
   origin: [
       `https://${process.env.APP_NAME}.herokuapp.com`, 
-      'https://<my_salesforce_org>.my.salesforce.com', 
+      `https://${process.env.SALESFORCE_DOMAIN}.my.salesforce.com`, 
       'http://localhost:8080'
     ]
 }));

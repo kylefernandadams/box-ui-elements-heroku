@@ -5,6 +5,7 @@
     "logo": "https://github.com/kylefernandadams/box-ui-elements-heroku-template/raw/main/box.png",
     "keywords": [
         "box",
+        "box-ui-elements",
         "salesforce",
         "canvasapp",
         "react"
@@ -12,15 +13,20 @@
     "website": "https://developer.box.com/",
     "env": {
         "BOX_CONFIG": {
-            "description": "Box application JSON contents",
+            "description": "Add the contents of your generated Box application JSON file",
             "value": ""
         },
         "REACT_APP_HOST": {
-            "description": "Replace with the name of your Heroku app",
+            "description": "Add the name of your Heroku app",
             "value": ""
         },
+        "SALESFORCE_DOMAIN": {
+            "description": "Add the domain for your Salesforce Org",
+            "value": "",
+            "required": false
+        },
         "SIGNED_REQUEST_CONSUMER_SECRET": {
-            "description": "Replace with your Salesforce CanvasApp CONSUMER SECRET KEY",
+            "description": "Add the CONSUMER SECRET from your Salesforce CanvasApp",
             "value": ""
         }
     }
