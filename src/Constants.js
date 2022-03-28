@@ -1,6 +1,6 @@
 export const THEME_COLOR = "#000000";
 
-export const EXPRESS_SERVER_HOST = "https://fierce-eyrie-95834.herokuapp.com";
+export const EXPRESS_SERVER_HOST = `https://${process.env.HEROKU_APP_NAME}.herokuapp.com`;
 // export const EXPRESS_SERVER_HOST = "http://localhost:8080";
 
 // export const SRV_EXPLORER_FOLDER_ID = "https://api.box.com/2.0/folders/0";
