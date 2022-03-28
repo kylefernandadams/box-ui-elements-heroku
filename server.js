@@ -84,12 +84,9 @@ app.post("/signedrequest", async (req, res) => {
 
 app.get('/box/explorer/token-downscope/:folderId', async (req, res) => {
     try {
-        const folderId = req.params.folderId;
-        console.log('Found folder: ', folderId);
-     
-        const folderResource =  `https://api.box.com/2.0/folders/${folderId}`;
-        const downscopedToken = await client.exchangeToken(EXPLORER_SCOPES, folderResource);
-        console.log('Generated token: ', downscopedToken);
+        const folderId = req.params.folderId;     
+        const downscopedToken = await client.exchangeToken(EXPLORER_SCOPES, `https://api.box.com/2.0/folders/${folderId}`);
+
         res.setHeader('Content-Type', 'application/json');
         res.status(200).send(downscopedToken);
     }
@@ -103,10 +100,8 @@ app.get('/box/explorer-recents/token-downscope/:userId', async (req, res) => {
     try {
         const userId = req.params.userId;
         const userClient = sdk.getAppAuthClient('user', userId);
-        const currentUser = await userClient.users.get(userClient.CURRENT_USER_ID);
-        console.log('Found current users: ', currentUser.name);
         const downscopedToken = await userClient.exchangeToken(RECENTS_SCOPES)
-        console.log('Generated token: ', downscopedToken);
+
         res.setHeader('Content-Type', 'application/json');
         res.status(200).send(downscopedToken);
     }
@@ -120,7 +115,7 @@ app.get('/box/picker/token-downscope/:folderId', async (req, res) => {
     try {
         const folderId = req.params.folderId;
         const downscopedToken = await client.exchangeToken(PICKER_SCOPES, `https://api.box.com/2.0/folders/${folderId}`);
-        console.log('Generated token: ', downscopedToken);
+
         res.setHeader('Content-Type', 'application/json');
         res.status(200).send(downscopedToken);
     }
@@ -134,7 +129,7 @@ app.get('/box/uploader/token-downscope/:folderId', async (req, res) => {
     try {
         const folderId = req.params.folderId;
         const downscopedToken = await client.exchangeToken(UPLOADER_SCOPES, `https://api.box.com/2.0/folders/${folderId}`);
-        console.log('Generated token: ', downscopedToken);
+
         res.setHeader('Content-Type', 'application/json');
         res.status(200).send(downscopedToken);
     }
@@ -148,7 +143,7 @@ app.get('/box/preview/token-downscope/:fileId', async (req, res) => {
     try {
         const fileId = req.params.fileId;
         const downscopedToken = await client.exchangeToken(PREVIEW_SCOPES, `https://api.box.com/2.0/files/${fileId}`);
-        console.log('Generated token: ', downscopedToken);
+
         res.setHeader('Content-Type', 'application/json');
         res.status(200).send(downscopedToken);
     }

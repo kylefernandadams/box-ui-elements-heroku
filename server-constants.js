@@ -1,5 +1,4 @@
 module.exports = {
-    REACT_SERVER_HOST: "https://fierce-eyrie-95834.herokuapp.com",
     // REACT_SERVER_HOST: "http://localhost:8080",
     // EXPLORER_SCOPES: "base_explorer",
     EXPLORER_SCOPES: "base_explorer item_preview item_download item_rename item_delete item_share item_upload root_readwrite annotation_view_all annotation_edit",
