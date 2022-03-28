@@ -8,11 +8,11 @@
     "env": {
       "BOX_CONFIG": {
             "description": "Box application JSON contents",
-          "value": "secret"
+          "value": "Add JSON here"
       },
       "SIGNED_REQUEST_CONSUMER_SECRET": {
             "description": "Replace with your Salesforce CanvasApp CONSUMER SECRET KEY",
-            "value": "secret"
+            "value": "Add SECRET here "
       }
     }
   }
