@@ -16,6 +16,7 @@ To deploy this project to Heroku, be sure to set your environment variables in t
 5. Deploy this template app to Heroku and add the environment variables below:
 - `BOX_CONFIG`
 - `SIGNED_REQUEST_CONSUMER_SECRET`
+  
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 ## Disclaimer
