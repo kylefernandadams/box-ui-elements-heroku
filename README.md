@@ -7,7 +7,8 @@ The Box UI Elements Heroku project is an example that uses a React.js frontend a
 2. Copy the contents of the application JSON config file.
 3. Deploy the [Box Canvas App Sample](https://github.com/kylefernandadams/box-canvas-app)
 4. Copy the consumer secret for the CanvasApp
-5. Deploy this template app to Heroku and add the environment variables below:
+5. Create a free Heroku account if you don't already have one.
+6. Deploy this template app to Heroku and add the environment variables below:
 - `REACT_APP_HOST`
 - `BOX_CONFIG`
 - `SIGNED_REQUEST_CONSUMER_SECRET`
