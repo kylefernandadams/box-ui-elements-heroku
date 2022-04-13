@@ -29,14 +29,18 @@ heroku git:clone -a <my-heroku-app-name>
 ```shell
 cd <my-heroku-app-name>
 ```
-5. Make you desired changes
-6. Deploy your changes
+5. Add the remote repository on heroku
+```shell
+heroku git:remote -a <my-heroku-app-name>
+```
+6. Make your desired changes
+7. Deploy your changes
 ```shell
 git add .
 git commit -am "Make mom proud"
 git push heroku master
 ```
-7. Tail logs
+8. Tail logs
 ```shell
 heroku logs --tail
 ```
