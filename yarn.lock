@@ -2921,10 +2921,10 @@ boolbase@^1.0.0, boolbase@~1.0.0:
   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
   integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
 
-box-node-sdk@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/box-node-sdk/-/box-node-sdk-2.0.0.tgz#461f3c4e432384f706660f1bbc135ebf5f97b1bf"
-  integrity sha512-cmTHvDvde20rAC0VF5RP/XPu114jOi+3T7F4a/XmbwZRzt6APuCA4ruw63GeEZnYI9WsQuaJMHjR/lcBFzYwWg==
+box-node-sdk@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/box-node-sdk/-/box-node-sdk-2.3.0.tgz#f581812038ff77f16836b51136a6b5088ddddd83"
+  integrity sha512-wDJml1CYVEI7cgsyQeiW79yqwYBfAWCCvW4t3boVNj40AHPXNb3WTWYuEdA9yWPMOUGcwakTNl+IkJuGLMsIxg==
   dependencies:
     "@types/bluebird" "^3.5.35"
     "@types/node" "^15.3.1"
@@ -2939,10 +2939,10 @@ box-node-sdk@^2.0.0:
     url-template "^2.0.8"
     uuid "^3.3.3"
 
-box-ui-elements@^14.0.0:
-  version "14.0.0"
-  resolved "https://registry.yarnpkg.com/box-ui-elements/-/box-ui-elements-14.0.0.tgz#19646eb0a5044777c9ece045d78742e080366e85"
-  integrity sha512-x/3/4rASOrgzv76/7Vfray1Z/CCMW/Xoe62iH1vArVJvyUcnJ4TYjxjTjvFLNH8+6pvaPN2zg93rfAHgnjvAjQ==
+box-ui-elements@^15.0.0:
+  version "15.0.0"
+  resolved "https://registry.yarnpkg.com/box-ui-elements/-/box-ui-elements-15.0.0.tgz#21ea53c106e20dc369ec09e9fb8d4d3a2f7286b1"
+  integrity sha512-h5ssQde5U8qrXkzPrX+WdeNFW2EHfBqb9918UkEvHBmupITD4x3CTRtRbgx6UXHDpIwF6kIxKx3sOX+2XxltwA==
 
 brace-expansion@^1.1.7:
   version "1.1.11"
