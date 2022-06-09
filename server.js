@@ -71,6 +71,10 @@ app.post("/signedrequest", async (req, res) => {
             const fileId = parameters.fileId;
             res.redirect(301, `/preview/${fileId}`);
             break;
+        case "metadata":
+            folderId = parameters.folderId;
+            res.redirect(301, `/explorer/${folderId}`);
+            break;
         default:
             res.redirect(301, '/explorer/0');
     }
