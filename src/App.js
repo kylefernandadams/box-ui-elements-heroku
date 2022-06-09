@@ -10,6 +10,7 @@ import ContentExplorerRecents from './components/ContentExplorerRecents';
 import ContentPicker from './components/ContentPicker';
 import ContentUploader from './components/ContentUploader';
 import ContentPreview from './components/ContentPreview';
+import ContentExplorerMetadata from './components/ContentExplorerMetadata';
 
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
           <Route exact path="/picker/:folderId" render={(props) => <ContentPicker  folderId={props.match.params.folderId}/>}/>
           <Route exact path="/uploader/:folderId" render={(props) => <ContentUploader  folderId={props.match.params.folderId}/>}/>
           <Route exact path="/preview/:fileId" render={(props) => <ContentPreview  fileId={props.match.params.fileId}/>}/>
+          <Route exact path="/metadata/:folderId" render={(props) => <ContentExplorerMetadata folderId={props.match.params.folderId} />}/>
+
         </Switch>
       </Router>
     </div>
