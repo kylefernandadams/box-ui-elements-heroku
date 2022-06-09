@@ -16,6 +16,14 @@
             "description": "Add the contents of your generated Box application JSON file",
             "value": ""
         },
+        "METADATA_TEMPLATE_KEY": {
+            "description": "Add the metadata template key",
+            "value": ""
+        },
+        "BOX_ENTERPRISE_ID": {
+            "description": "Add the Box Enterprise Id",
+            "value": ""
+        },
         "REACT_APP_HOST": {
             "description": "Add the name of your Heroku app",
             "value": ""
