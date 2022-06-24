@@ -73,7 +73,22 @@ app.post("/signedrequest", async (req, res) => {
             break;
         case "metadata":
             folderId = parameters.folderId;
-            res.redirect(301, `/metadata/${folderId}`);
+            const enterpriseId = parameters.enterpriseId;
+            const mdTemplateKey = parameters.mdTemplateKey;
+            const mdQuery = parameters.mdQuery;
+            const mdQueryParams = parameters.mdQueryParams;
+            const mdFieldKeys = parameters.mdFieldKeys;
+            const mdFieldDisplayNames = parameters.mdFieldDisplayNames;
+            const mdOrderByFieldKey = parameters.mdOrderByFieldKey;
+
+            res.redirect(301, `/metadata?folderId=${folderId}
+                &enterpriseId=${enterpriseId}
+                &mdTemplateKey=${mdTemplateKey}
+                &mdQuery=${mdQuery}
+                &mdQueryParams=${mdQueryParams}
+                &mdFieldKeys=${mdFieldKeys}
+                &mdFieldDisplayNames=${mdFieldDisplayNames}
+                &mdOrderByFieldKey=${mdOrderByFieldKey}`);
             break;
         default:
             res.redirect(301, '/explorer/0');

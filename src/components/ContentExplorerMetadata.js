@@ -3,42 +3,54 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { ContentExplorer } from 'box-ui-elements';
 import { ScaleLoader } from 'react-spinners';
-import { THEME_COLOR, EXPRESS_SERVER_HOST, ENTERPRISE_ID, METADATA_TEMPLATE_KEY } from '../Constants';
+import { THEME_COLOR, EXPRESS_SERVER_HOST } from '../Constants';
 
 
-export default ({ folderId, memberId }) => {
+export default ({  match, location, history }) => {
     const [token, setToken] = useState(null);
     const [rootFolderId, setRootFolderId] = useState(0);
     const [isLoading, setIsLoading] = useState(false);
+    const folderId = new URLSearchParams(location.search).get('folderId');
+    const enterpriseId = new URLSearchParams(location.search).get('enterpriseId');
+    const mdTemplateKey = new URLSearchParams(location.search).get('mdTemplateKey');
+    const mdQueryString = new URLSearchParams(location.search).get('mdQuery');
+    const mdQueryParamsString = new URLSearchParams(location.search).get('mdQueryParams');
+    const mdFieldKeys = new URLSearchParams(location.search).get('mdFieldKeys');
+    const mdFieldDisplayNames = new URLSearchParams(location.search).get('mdFieldDisplayNames');
+    const mdOrderByFieldKey = new URLSearchParams(location.search).get('mdOrderByFieldKey');
 
-    const eidAndMDTemplate = `enterprise_${ENTERPRISE_ID}.${METADATA_TEMPLATE_KEY}`;
 
-    const defaultView = "metadata";
+    const eidAndMDTemplate = `enterprise_${enterpriseId}.${mdTemplateKey}`;
+
+    const queryParams = {};
+    const queryParamArray = mdQueryParamsString.split(',');
+    queryParamArray.forEach(param => {
+        queryParams[param] = param;
+    });
+
+    const fields = [];
+    const fieldKeys = mdFieldKeys.split(',');
+    const fieldDisplayNames = mdFieldDisplayNames.split(',');
+    fieldKeys.forEach((fieldKey, index) => {
+        const fieldDisplayName = fieldDisplayNames[index];
+        fields.push({ key: fieldKey, displayName: fieldDisplayName});
+    });
+
     const mdQuery = {
         from: eidAndMDTemplate,
-        query: `memberId = '123456'`,
-        fields: [
-            'name',
-            'size',
-            'id',
-            'sha1',
-            `metadata.${eidAndMDTemplate}.memberId`,
-            `metadata.${eidAndMDTemplate}.documentType`
-        ],
+        query: mdQueryString,
+        query_params: queryParams,
+        fields: fieldKeys,
         order_by:  [
         {
-          field_key: 'memberId',
+          field_key: mdOrderByFieldKey,
           direction: "asc"
         }
       ],
       ancestor_folder_id: '0'
     }
 
-    const fields = [
-        { key: 'memberId', displayName: 'Member Id'},
-        { key: 'documentType', displayName: 'Document Type'}
-    ];
-
+    const defaultView = "metadata";
     useEffect(() => {
         const fetchToken = async () => {
             setIsLoading(true);
