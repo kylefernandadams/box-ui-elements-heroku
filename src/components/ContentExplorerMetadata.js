@@ -28,19 +28,21 @@ export default ({  match, location, history }) => {
         queryParams[param] = param;
     });
 
-    const fields = [];
+    const fields = ['name', 'size'];
+    const fieldsToShow = [];
     const fieldKeys = mdFieldKeys.split(',');
     const fieldDisplayNames = mdFieldDisplayNames.split(',');
     fieldKeys.forEach((fieldKey, index) => {
         const fieldDisplayName = fieldDisplayNames[index];
-        fields.push({ key: fieldKey, displayName: fieldDisplayName});
+        fields.push(fieldKey);
+        fieldsToShow.push({ key: fieldKey, displayName: fieldDisplayName});
     });
 
     const mdQuery = {
         from: eidAndMDTemplate,
         query: mdQueryString,
         query_params: queryParams,
-        fields: fieldKeys,
+        fields: fields,
         order_by:  [
         {
           field_key: mdOrderByFieldKey,
@@ -71,7 +73,7 @@ export default ({  match, location, history }) => {
                 language="en-US"
                 token={token}
                 metadataQuery={mdQuery}
-                fieldsToShow={fields}
+                fieldsToShow={fieldsToShow}
                 defaultView={defaultView}
             />
             </div>
