@@ -29,14 +29,22 @@ heroku git:clone -a <my-heroku-app-name>
 ```shell
 cd <my-heroku-app-name>
 ```
-5. Make your desired changes
-6. Deploy your changes
+5. Add git remote to the source code repo
+```shell
+git remote add origin https://github.com/kylefernandadams/box-ui-elements-heroku 
+```
+6. Pull down the source code from the origin
+```shell
+git pull origin main
+```
+7. Make your desired changes
+8. Deploy your changes to Heroku
 ```shell
 git add .
 git commit -am "Make mom proud"
 git push heroku main
 ```
-7. Tail logs
+9. Tail logs
 ```shell
 heroku logs --tail
 ```
