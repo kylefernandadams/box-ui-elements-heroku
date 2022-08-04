@@ -8,8 +8,14 @@ const app = express();
 
 
 const BoxSDK = require('box-node-sdk');
-const boxConfig = process.env.BOX_CONFIG;
-const sdk = BoxSDK.getPreconfiguredInstance(JSON.parse(boxConfig));
+let sdk;
+if (process.env.NODE_ENV && process.env.NODE_ENV === 'production') {
+    sdk = BoxSDK.getPreconfiguredInstance(JSON.parse(process.env.BOX_CONFIG));
+}
+else {
+    require('dotenv').config();
+    sdk = BoxSDK.getPreconfiguredInstance(JSON.parse(process.env.BOX_CONFIG));
+}
 const client = sdk.getAppAuthClient('enterprise');
 
 const { EXPLORER_SCOPES, RECENTS_SCOPES, PICKER_SCOPES, UPLOADER_SCOPES, PREVIEW_SCOPES } = require('./server-constants');
@@ -71,25 +77,29 @@ app.post("/signedrequest", async (req, res) => {
             const fileId = parameters.fileId;
             res.redirect(301, `/preview/${fileId}`);
             break;
-        case "metadata":
-            folderId = parameters.folderId;
-            const enterpriseId = parameters.enterpriseId;
-            const mdTemplateKey = parameters.mdTemplateKey;
-            const mdQuery = parameters.mdQuery;
-            const mdQueryParams = parameters.mdQueryParams;
-            const mdFieldKeys = parameters.mdFieldKeys;
-            const mdFieldDisplayNames = parameters.mdFieldDisplayNames;
-            const mdOrderByFieldKey = parameters.mdOrderByFieldKey;
-
-            res.redirect(301, `/metadata?folderId=${folderId}
-                &enterpriseId=${enterpriseId}
-                &mdTemplateKey=${mdTemplateKey}
-                &mdQuery=${mdQuery}
-                &mdQueryParams=${mdQueryParams}
-                &mdFieldKeys=${mdFieldKeys}
-                &mdFieldDisplayNames=${mdFieldDisplayNames}
-                &mdOrderByFieldKey=${mdOrderByFieldKey}`);
-            break;
+            case "metadata":
+                folderId = parameters.folderId;
+                const enterpriseId = parameters.enterpriseId;
+                const mdTemplateKey = parameters.mdTemplateKey;
+                const mdQuery = parameters.mdQuery;
+                const mdQueryParamFieldKey = parameters.mdQueryParamFieldKey;
+                const mdQueryParamOperator = parameters.mdQueryParamOperator;
+                const mdQueryParamValue = parameters.mdQueryParamValue;
+                const mdFieldKeys = parameters.mdFieldKeys;
+                const mdFieldDisplayNames = parameters.mdFieldDisplayNames;
+                const mdOrderByFieldKey = parameters.mdOrderByFieldKey;
+    
+                res.redirect(301, `/metadata?folderId=${folderId}
+                    &enterpriseId=${enterpriseId}
+                    &mdTemplateKey=${mdTemplateKey}
+                    &mdQuery=${mdQuery}
+                    &mdQueryParamFieldKey=${mdQueryParamFieldKey}
+                    &mdQueryParamOperator=${mdQueryParamOperator}
+                    &mdQueryParamValue=${mdQueryParamValue}
+                    &mdFieldKeys=${mdFieldKeys}
+                    &mdFieldDisplayNames=${mdFieldDisplayNames}
+                    &mdOrderByFieldKey=${mdOrderByFieldKey}`);
+                break;
         default:
             res.redirect(301, '/explorer/0');
     }
@@ -114,6 +124,20 @@ app.get('/box/explorer/token-downscope/:folderId', async (req, res) => {
         res.status(500).send({ error: error.mesage });
     }
 })
+
+app.get('/box/metadata/token-downscope', async (req, res) => {
+    try {
+        const downscopedToken = await client.exchangeToken(EXPLORER_SCOPES);
+
+        res.setHeader('Content-Type', 'application/json');
+        res.status(200).send(downscopedToken);
+    }
+    catch(error) {
+        console.log('Failed to get downscoped token: ', error)
+        res.status(500).send({ error: error.mesage });
+    }
+})
+
 
 app.get('/box/explorer-recents/token-downscope/:userId', async (req, res) => {
     try {
