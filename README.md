@@ -34,7 +34,7 @@ cd <my-heroku-app-name>
 ```shell
 git add .
 git commit -am "Make mom proud"
-git push heroku master
+git push heroku main
 ```
 7. Tail logs
 ```shell
