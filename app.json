@@ -28,6 +28,14 @@
         "SIGNED_REQUEST_CONSUMER_SECRET": {
             "description": "Add the CONSUMER SECRET from your Salesforce CanvasApp",
             "value": ""
+        },
+        "SLACK_BOT_TOKEN": {
+            "description": "Add the Bot Token for your custom Slack App",
+            "value": ""
+        },
+        "SLACK_SIGNING_SECRET": {
+            "description": "Add the Slack Signing Secret for you custom Slack App",
+            "value": ""
         }
     }
 }
