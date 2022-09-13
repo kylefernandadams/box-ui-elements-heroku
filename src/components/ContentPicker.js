@@ -3,8 +3,6 @@ import axios from 'axios';
 import { ContentPicker } from 'box-ui-elements';
 import { ScaleLoader } from 'react-spinners';
 import { THEME_COLOR, EXPRESS_SERVER_HOST } from '../Constants';
-import client from "@salesforce/canvas-js-sdk";
-
 
 export default ({  match, location, history }) => {
     const [token, setToken] = useState(null);
@@ -24,11 +22,6 @@ export default ({  match, location, history }) => {
             userFullName: userFullName,
             items: items
         });     
-
-        // client.publish(signedRequest.client, {
-        //     name : "mynamespace.statusChanged", 
-        //     payload : {status : 'Completed'}});
-
     }
 
     async function handleCancel(items) {
