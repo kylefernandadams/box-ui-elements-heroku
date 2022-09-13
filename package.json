@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@slack/bolt": "^3.12.1",
     "body-parser": "^1.19.2",
-    "box-node-sdk": "^2.3.0",
+    "box-node-sdk": "^2.5.0",
     "box-ui-elements": "^15.0.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
