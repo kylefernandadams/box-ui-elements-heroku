@@ -20,7 +20,7 @@ function App() {
           <Route exact path="/" render={() => <ContentExplorer  folderId={'0'}/>}/>
           <Route exact path="/explorer/:folderId" render={(props) => <ContentExplorer folderId={props.match.params.folderId}/>}/>
           <Route exact path="/recents/:userId" render={(props) => <ContentExplorerRecents userId={props.match.params.userId}/>}/>
-          <Route exact path="/picker/:folderId" render={(props) => <ContentPicker  folderId={props.match.params.folderId}/>}/>
+          <Route exact path="/picker" render={(props) => <ContentPicker location={props.location} />}/>
           <Route exact path="/uploader/:folderId" render={(props) => <ContentUploader  folderId={props.match.params.folderId}/>}/>
           <Route exact path="/preview/:fileId" render={(props) => <ContentPreview  fileId={props.match.params.fileId}/>}/>
           <Route exact path="/metadata" render={(props) => <ContentExplorerMetadata location={props.location} />}/>

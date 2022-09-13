@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
 
+import React, { useState, useEffect } from 'react';
+import _ from 'lodash';
 import axios from 'axios';
 import { ContentExplorer } from 'box-ui-elements';
 import { ScaleLoader } from 'react-spinners';
@@ -10,27 +11,23 @@ export default ({  match, location, history }) => {
     const [token, setToken] = useState(null);
     const [rootFolderId, setRootFolderId] = useState(0);
     const [isLoading, setIsLoading] = useState(false);
-    const enterpriseId = new URLSearchParams(location.search).get('enterpriseId').trim();
-    const mdTemplateKey = new URLSearchParams(location.search).get('mdTemplateKey').trim();
-    const mdQueryParamFieldKey = new URLSearchParams(location.search).get('mdQueryParamFieldKey').trim();
-    const mdQueryParamOperator = new URLSearchParams(location.search).get('mdQueryParamOperator').trim();
-    const mdQueryParamValue = new URLSearchParams(location.search).get('mdQueryParamValue').trim();
+    const boxEnterpriseId = new URLSearchParams(location.search).get('boxEnterpriseId').trim();
+    const boxMdTemplateKey = new URLSearchParams(location.search).get('boxMdTemplateKey').trim();
+    const boxMdQueryFieldKey = new URLSearchParams(location.search).get('boxMdQueryFieldKey').trim();
+    const boxMdQueryOperator = new URLSearchParams(location.search).get('boxMdQueryOperator').trim();
+    const salesforceField = new URLSearchParams(location.search).get('salesforceField').trim();
+    const boxMdColumnFieldKeys = new URLSearchParams(location.search).get('boxMdColumnFieldKeys').trim();
 
-    const mdFieldKeys = new URLSearchParams(location.search).get('mdFieldKeys').trim();
-    const mdFieldDisplayNames = new URLSearchParams(location.search).get('mdFieldDisplayNames').trim();
-    const mdOrderByFieldKey = new URLSearchParams(location.search).get('mdOrderByFieldKey').trim();
-
-
-    const eidAndMDTemplate = `enterprise_${enterpriseId}.${mdTemplateKey}`;
+    const eidAndMDTemplate = `enterprise_${boxEnterpriseId}.${boxMdTemplateKey}`;
 
     const fields = [];
-    const fieldsToShow = [];
-    const fieldKeys = mdFieldKeys.split(',');
-    const fieldDisplayNames = mdFieldDisplayNames.split(',');
+    const fieldsToShow = [{ key: boxMdQueryFieldKey, displayName: _.startCase(boxMdQueryFieldKey), canEdit: true}];
+    const fieldKeys = boxMdColumnFieldKeys.split(',');
     fieldKeys.forEach((fieldKey, index) => {
-        const fieldDisplayName = fieldDisplayNames[index];
-        fields.push(fieldKey);
-        fieldsToShow.push({ key: fieldKey, displayName: fieldDisplayName, canEdit: true} );
+        const fieldDisplayName = _.startCase(fieldKey);
+        const mdField = `${eidAndMDTemplate}.${fieldKey}`;
+        fields.push(mdField);
+        fieldsToShow.push({ key: mdField, displayName: fieldDisplayName, canEdit: true} );
     });
 
     
@@ -40,19 +37,17 @@ export default ({  match, location, history }) => {
         ancestor_folder_id: '0',
         order_by:  [
             {
-              field_key: mdOrderByFieldKey,
+              field_key: boxMdQueryFieldKey,
               direction: "asc"
             }
           ]
     };
 
-    console.log('FOund md query field value: ', mdQueryParamValue);
-    console.log('md field value length: ', mdQueryParamValue.length);
-    if(typeof mdQueryParamValue !== 'undefined' && mdQueryParamValue !== 'undefined' && mdQueryParamValue) {
-        mdQuery['query'] = `${mdQueryParamFieldKey} ${mdQueryParamOperator} :value`;       
-        mdQuery['query_params'] = { value: mdQueryParamValue};
+    if(typeof salesforceField !== 'undefined' && salesforceField !== 'undefined' && salesforceField) {
+        mdQuery['query'] = `${boxMdQueryFieldKey} ${boxMdQueryOperator} :value`;       
+        mdQuery['query_params'] = { value: salesforceField};
     } else {
-        mdQuery['query'] = `${mdQueryParamFieldKey} ${mdQueryParamOperator}`;       
+        mdQuery['query'] = `${boxMdQueryFieldKey} ${boxMdQueryOperator}`;       
     }
     
    
@@ -81,6 +76,7 @@ export default ({  match, location, history }) => {
                 metadataQuery={mdQuery}
                 fieldsToShow={fieldsToShow}
                 defaultView={defaultView}
+                canShare={true}
             />
             </div>
         );
